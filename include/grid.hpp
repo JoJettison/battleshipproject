@@ -9,7 +9,7 @@ namespace bsp
       void display();
       void addShip(int fcordx, int fcordy, int ecordx, int ecordy);
       int alpConvert(char alph);
-    }
+    };
   }
-}
+
 #endif
