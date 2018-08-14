@@ -1,5 +1,5 @@
 PRODUCT  := battlerun
-BIN 	 := bin
+BIN 	  := bin
 INC      := include
 SRC      := src
 OBJ      := obj
