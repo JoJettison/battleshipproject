@@ -8,7 +8,7 @@ namespace bsp
     public:
       void display();
       void addShip(int fcordx, int fcordy, int ecordx, int ecordy);
-      int alpConvert(char alph);
+      int alphConvert(char alph);
     };
   }
 

@@ -19,19 +19,20 @@ namespace bsp
     { 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 } //J
    };
 
-  void display()
+  void Grid::display()
     {
       std::cout<<"************"<<"CURRENTGRID"<<"***************"<<std::endl;
-      for(int i=1; i<12; i++)
+      for(int i=1; i<11; i++)
       {
-        for(int j=1; j<16; j++)
+        for(int j=1; j<15; j++)
         {
-          std::cout<<battlegrid[i][j]<<std::endl;
+          std::cout<<" "<<battlegrid[i][j];
         }
+        std::cout<<std::endl;
       }
     }
 
-  void addShip(int fcordx, int fcordy, int ecordx, int ecordy)
+  void Grid::addShip(int fcordx, int fcordy, int ecordx, int ecordy)
   {
     if( fcordx == ecordx )
     {
@@ -53,7 +54,7 @@ namespace bsp
     }
   }
 
-    int alphConvert(char alph)
+    int Grid::alphConvert(char alph)
     {
       switch(alph)
       {
