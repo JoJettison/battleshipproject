@@ -19,17 +19,55 @@ namespace bsp
     { 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 } //J
    };
 
+   int horizgrid[15] ={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+   std::string vertgrid[11] ={"","A","B","C","D","E","F","G","H","I","J"};
+
   void Grid::display()
     {
       std::cout<<"************"<<"CURRENTGRID"<<"***************"<<std::endl;
+
+      for(int e=1; e<15; e++)
+      {
+        if(e==1)
+        {
+          std::cout<<"   "<<horizgrid[e];
+        }
+        else if(e>=10)
+        {
+          std::cout<<" "<<horizgrid[e];
+        }
+        else
+        {
+          std::cout<<"  "<<horizgrid[e];
+        }
+      }
+      std::cout<<std::endl;
       for(int i=1; i<11; i++)
       {
+        std::cout<<vertgrid[i];
         for(int j=1; j<15; j++)
         {
-          std::cout<<" "<<battlegrid[i][j];
+          std::cout<<"  "<<battlegrid[i][j];
         }
-        std::cout<<std::endl;
+        std::cout<<"  "<<vertgrid[i]<<std::endl;
       }
+
+      for(int f=1; f<15; f++)
+      {
+        if(f==1)
+        {
+          std::cout<<"   "<<horizgrid[f];
+        }
+        else if(f>=10)
+        {
+          std::cout<<" "<<horizgrid[f];
+        }
+        else
+        {
+          std::cout<<"  "<<horizgrid[f];
+        }
+      }
+      std::cout<<std::endl;
     }
 
   void Grid::addShip(int fcordx, int fcordy, int ecordx, int ecordy)
