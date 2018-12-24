@@ -3,7 +3,7 @@
 
 namespace bsp
 {
-
+    //Define the grid size and intial values
     int battlegrid[11][15] =
   // UN  1  2  3  4  5  6  7  8  9  10 11 12 13 14
    {{ 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 }, //UN
@@ -19,9 +19,16 @@ namespace bsp
     { 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 } //J
    };
 
+   //Grid numbers for horizontal axis
    int horizgrid[15] ={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+   //Grid letters for vertical axis
    std::string vertgrid[11] ={"","A","B","C","D","E","F","G","H","I","J"};
 
+
+  /*
+  Displays the status of a single grid
+  //TODO add second grid for opponent
+  */
   void Grid::display()
     {
       std::cout<<"************"<<"CURRENTGRID"<<"***************"<<std::endl;
@@ -70,6 +77,12 @@ namespace bsp
       std::cout<<std::endl;
     }
 
+  /*
+  Add a ship (repesented by 1's atm) to the Grid
+  @Params fcordx(int) fcordy(int)[The 1st coordinate of x & y] ecordx(int), ecordy(int)[The 2nd coordinate of x & y]
+  USAGE: addShip(2,3,2,6) places ship from (2,3) to (2,6) horizontally
+  //TODO Make easier to read, add error handling
+  */
   void Grid::addShip(int fcordx, int fcordy, int ecordx, int ecordy)
   {
     if( fcordx == ecordx )
@@ -91,7 +104,12 @@ namespace bsp
       return;
     }
   }
-
+    /*
+    Converts an alphabetic character to its numeric equivalent
+    @Params alph(char)
+    @Return int representing the character
+    //TODO Maybe just use an enum???
+    */
     int Grid::alphConvert(char alph)
     {
       switch(alph)
