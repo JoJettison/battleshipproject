@@ -16,7 +16,7 @@ namespace bsp
     { "0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" }, //G
     { "0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" }, //H
     { "0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" }, //I
-    { "0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" } //J
+    { "0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" }  //J
    };
 
    //Grid numbers for horizontal axis
@@ -104,11 +104,27 @@ namespace bsp
       return;
     }
   }
+
+
+  int Grid::fire(int xcord, int ycord){
+
+    if(battlegrid[xcord][ycord] == "1" || battlegrid[xcord][ycord] == "X"){  // Check if space is occupied by a ship or the space is marked as hit
+        battlegrid[xcord][ycord] = "X";   // Mark the space as hit
+        return 1;
+    }
+    else if(battlegrid[xcord][ycord] == "0"){ // If not occupied
+        battlegrid[xcord][ycord] = "!";  // Mark the space as missed
+        return 0;
+    }
+    else{
+       return -1;
+    }
+  }
     /*
     Converts an alphabetic character to its numeric equivalent
     @Params alph(char)
     @Return int representing the character
-    //TODO Maybe just use an enum???
+    //TODO Maybe just use an enum?
     */
     int Grid::alphConvert(char alph)
     {
