@@ -1,6 +1,7 @@
 #ifndef __GRID_HPP__
 #define __GRID_HPP__
 
+#include "val.hpp"
 namespace bsp
 {
     class Grid
