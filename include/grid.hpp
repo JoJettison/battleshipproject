@@ -7,11 +7,12 @@ namespace bsp
     class Grid
     {
     public:
-      void display();
+      void display(int mode);
       void addShip(int fcordx, int fcordy, int ecordx, int ecordy);
       int fire(int xcord, int ycord);
       int alphConvert(char alph);
       int gameactive();
+      void nuke();
     };
   }
 

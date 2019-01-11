@@ -28,9 +28,9 @@ namespace bsp
   /*
   Displays the status of a single grid
   */
-  void Grid::display()
+  void Grid::display(int mode)
     {
-      std::cout<<"************"<<"CURRENTGRID"<<"***************"<<std::endl;
+      std::cout<<" ************"<<"CURRENTGRID"<<"***************"<<std::endl;
 
       for(int e=1; e<15; e++)
       {
@@ -48,16 +48,33 @@ namespace bsp
         }
       }
       std::cout<<std::endl;
-      for(int i=1; i<11; i++)
-      {
-        std::cout<<vertgrid[i];
-        for(int j=1; j<15; j++)
-        {
-          std::cout<<"  "<<battlegrid[i][j];
-        }
-        std::cout<<"  "<<vertgrid[i]<<std::endl;
-      }
 
+      if(mode == 0)   //Personal Grid display
+      {
+        for(int i=1; i<11; i++)
+        {
+          std::cout<<vertgrid[i];
+          for(int j=1; j<15; j++)
+          {
+            std::cout<<"  "<<battlegrid[i][j];
+          }
+          std::cout<<"  "<<vertgrid[i]<<std::endl;
+        }
+      }
+      else{           //Public Grid display
+        for(int i=1; i<11; i++)
+        {
+          std::cout<<vertgrid[i];
+          for(int j=1; j<15; j++)
+          {
+            if(battlegrid[i][j] == "1"){
+                std::cout<<"  "<<"0"
+            }
+            std::cout<<"  "<<battlegrid[i][j];
+          }
+          std::cout<<"  "<<vertgrid[i]<<std::endl;
+        }
+      }
       for(int f=1; f<15; f++)
       {
         if(f==1)
@@ -160,10 +177,23 @@ namespace bsp
       {
         for(int j=1; j<15; j++)
         {
-          if(battlegrid[i][j] == "1");
+          if(battlegrid[i][j] == "1")
+          {
           count++;
+          }
         }
     }
     return count;
  }
+  void Grid::nuke() {
+    for(int i=1; i<11; i++)
+    {
+      for(int j=1; j<15; j++)
+      {
+        battlegrid[i][j] == "X";
+      }
+    }
+  }
+
+
 }
