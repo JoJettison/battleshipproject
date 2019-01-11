@@ -30,7 +30,7 @@ namespace bsp
   */
   void Grid::display(int mode)
     {
-      std::cout<<" ************"<<"CURRENTGRID"<<"***************"<<std::endl;
+      std::cout<<"   ************"<<"CURRENTGRID"<<"***************"<<std::endl;
 
       for(int e=1; e<15; e++)
       {
@@ -61,7 +61,8 @@ namespace bsp
           std::cout<<"  "<<vertgrid[i]<<std::endl;
         }
       }
-      else{           //Public Grid display
+      else
+      {           //Public Grid display
         for(int i=1; i<11; i++)
         {
           std::cout<<vertgrid[i];
@@ -70,7 +71,9 @@ namespace bsp
             if(battlegrid[i][j] == "1"){
                 std::cout<<"  "<<"0";
             }
-            std::cout<<"  "<<battlegrid[i][j];
+            else{
+              std::cout<<"  "<<battlegrid[i][j];
+            }
           }
           std::cout<<"  "<<vertgrid[i]<<std::endl;
         }
