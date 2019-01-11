@@ -68,7 +68,7 @@ namespace bsp
           for(int j=1; j<15; j++)
           {
             if(battlegrid[i][j] == "1"){
-                std::cout<<"  "<<"0"
+                std::cout<<"  "<<"0";
             }
             std::cout<<"  "<<battlegrid[i][j];
           }
