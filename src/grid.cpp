@@ -27,7 +27,6 @@ namespace bsp
 
   /*
   Displays the status of a single grid
-  //TODO add second grid for opponent
   */
   void Grid::display()
     {
@@ -155,4 +154,16 @@ namespace bsp
       }
     }
 
+    int Grid::gameactive(){
+      int count = 0;
+      for(int i=1; i<11; i++)
+      {
+        for(int j=1; j<15; j++)
+        {
+          if(battlegrid[i][j] == "1");
+          count++;
+        }
+    }
+    return count;
  }
+}

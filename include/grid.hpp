@@ -11,6 +11,7 @@ namespace bsp
       void addShip(int fcordx, int fcordy, int ecordx, int ecordy);
       int fire(int xcord, int ycord);
       int alphConvert(char alph);
+      int gameactive();
     };
   }
 
