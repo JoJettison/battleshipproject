@@ -1,17 +1,18 @@
 #include "grid.hpp"
-#include <iostream>
 
 int main()
 {
-  bool gameRun, ply1 = true;
+  bool gameRun = true, ply1 = true;
   bool movemade = false;
-  int playsel, modesel =1;
+  int playsel =1, modesel =1;
   std::string configsel ="C";
   std::string movesel = " ";
   std::string configcode= "A3";
-  std::string Coord1, Coord2, tarCord= " ";
+  std::string Coord1= "", Coord2= "", tarCord= "";
   bsp::Grid P1grid;
   bsp::Grid P2grid;
+
+  //std::cout << (gameRun ? "This is true": "this is false") << '\n';
 
    while (gameRun) {
      std::cout << "Remote terminal activated, input number of players" << '\n';
