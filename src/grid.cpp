@@ -2,7 +2,7 @@
 
 namespace bsp
 {
-    //Define the grid size and intial values
+
   //   std::string battlegrid[11][15] =
   // //  UN    1    2    3    4    5    6    7    8    9    10   11   12   13   14
   //  {{ "0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" }, //UN
@@ -22,7 +22,7 @@ namespace bsp
    int horizgrid[15] ={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
    //Grid letters for vertical axis
    std::string vertgrid[11] ={"","A","B","C","D","E","F","G","H","I","J"};
-
+   //Define the grid size and intial values
    Grid::Grid(): battlegrid{
      { "0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" }, //UN
      { "0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" }, //A
@@ -43,6 +43,7 @@ namespace bsp
 
   /*
   Displays the status of a single grid
+  @Param mode [int] used to indicate public or private view
   */
   void Grid::display(int mode)
     {
@@ -140,7 +141,11 @@ namespace bsp
     }
   }
 
-
+  /*
+  Fire a shot (repesented by X's atm) on the Grid
+  @Params xcord(int) [The X coordinate to shoot at], ycord(int)[The Y coordinate to shoot at]
+  USAGE: Fire(2,6) Fires at (2,6) and returns 1 if hit, 0 if missed
+  */
   int Grid::fire(int xcord, int ycord){
 
     if(battlegrid[xcord][ycord] == "1" || battlegrid[xcord][ycord] == "X"){  // Check if space is occupied by a ship or the space is marked as hit
@@ -189,7 +194,9 @@ namespace bsp
           return 0;
       }
     }
-
+/*
+Checks if any ships are left on the grid, returns >0 if so
+ */
     int Grid::gameactive(){
       int count = 0;
       for(int i=1; i<11; i++)
@@ -204,6 +211,10 @@ namespace bsp
     }
     return count;
  }
+
+ /*
+ Fires a shot at every space on the grid, effectively instantly ending the game
+  */
   void Grid::nuke() {
     for(int i=1; i<11; i++)
     {
