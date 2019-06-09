@@ -1,8 +1,19 @@
 #include "grid.hpp"
 
+void typedPrint(std::string msg){
+
+  for(int i =0; i< msg.length(); i++){
+    std::cout<<msg[i]<<std::flush;
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+  }
+  std::cout <<'\n';
+
+}
+
+
 int main()
 {
-  bool gameRun = true, ply1 = true;
+  bool gameRun = true, ply1 = true, ply2 = true;
   bool movemade = false;
   int playsel =1, modesel =1;
   std::string configsel ="C";
@@ -15,35 +26,44 @@ int main()
   //std::cout << (gameRun ? "This is true": "this is false") << '\n';
 
    while (gameRun) {
-     std::cout << "Remote terminal activated, input number of players" << '\n';
+     typedPrint("Remote terminal activated, input number of players");
      std::cin >> playsel;
      if(playsel == 1){  //1 Player game
-       std::cout << "Single player is currently unsupported. System will terminate before game start" <<'\n' <<'\n';
-       std::cout << "1 Player mission selected." << '\n'<< "Satellite link established, input game option"<<'\n' <<'\n';
-       std::cout << "1: Classic Mission"<<'\n'<<"2: Bonus Mission"<<'\n'<<"3: Salvo Mission"<<'\n'<<"4: Advanced Mission"<<'\n';
+       std::cin.sync();
+       typedPrint("Single player is currently unsupported. System will terminate before game start");
+       std::cout <<'\n';
+       std::cout << "1 Player mission selected." << '\n';
+       typedPrint("Satellite link established, input game option");
+       std::cout <<'\n';
+       typedPrint("1: Classic Mission");
+       typedPrint("2: Bonus Mission");
+       typedPrint("3: Salvo Mission");
+       typedPrint("4: Advanced Mission");
+       std::cout <<'\n';
        switch (modesel) { // Game type selection
-         case 1: std::cout <<'\n' <<"Classic Mission Selected." << '\n'; break;
-         case 2: std::cout <<'\n' <<"Bonus Mission Selected." << '\n'; break;
-         case 3: std::cout <<'\n' <<"Salvo Mission Selected." << '\n'; break;
-         case 4: std::cout <<'\n' <<"Advanced Mission Selected." << '\n'; break;
+         case 1: typedPrint("Classic Mission Selected."); break;
+         case 2: typedPrint("Bonus Mission Selected."); break;
+         case 3: typedPrint("Salvo Mission Selected."); break;
+         case 4: typedPrint("Advanced Mission Selected."); break;
        }
-       std::cout << "Player 1, enter fleet configuration. A/C? " << '\n';
+      typedPrint("Player 1, enter fleet configuration. A/C? ");
        std::cin >> configsel;
         if (configsel =="A" || configsel == "a") {
-          std::cout << "Auto Configuration Selected. Enter configuration code." << '\n';
+          typedPrint("Auto Configuration Selected. Enter configuration code.");
           std::cin >> configcode;
           //TODO Logic for loading specifed grid
         }
         else if(configsel == "C" || configsel == "c"){
-          std::cout << " Custom Configuration Selected" << '\n' << '\n';
+          typedPrint("Custom Configuration Selected");
+          std::cout << '\n';
           for(int i =0; i <5; i++){
             P1grid.display(0);   //Display of the current grid
               switch (i) {    //Message showing which ship is being entered
-                case 0 : std::cout <<'\n'<< "Aircraft Carrier Reporting! [5 Spaces] Enter Coordinates: "; break;
-                case 1 : std::cout <<'\n'<< "Battleship Reporting! [4 Spaces] Enter Coordinates: "; break;
-                case 2 : std::cout <<'\n'<< "Destroyer Reporting! [3 Spaces] Enter Coordinates: "; break;
-                case 3 : std::cout <<'\n'<< "Submarine Reporting! [3 Spaces] Enter Coordinates: "; break;
-                case 4 : std::cout <<'\n'<< "Patrol Boat Reporting! [2 Spaces] Enter Coordinates: "; break;
+                case 0 : typedPrint("Aircraft Carrier Reporting! [5 Spaces] Enter Coordinates: "); break;
+                case 1 : typedPrint("Battleship Reporting! [4 Spaces] Enter Coordinates: "); break;
+                case 2 : typedPrint("Destroyer Reporting! [3 Spaces] Enter Coordinates: "); break;
+                case 3 : typedPrint("Submarine Reporting! [3 Spaces] Enter Coordinates: "); break;
+                case 4 : typedPrint("Patrol Boat Reporting! [2 Spaces] Enter Coordinates: "); break;
               }
 
           std::cin >>Coord1 >> Coord2;
@@ -59,8 +79,8 @@ int main()
          std::cout << configsel;
          std::cerr << "INVALID INPUT" << '\n';
        }
-       std::cout << "General quarters! General quarters! man your battlestations! This is NOT a drill! ";
-       std::cout << "REPEAT: This is NOT a drill" << '\n';
+       typedPrint("General quarters! General quarters! man your battlestations! This is NOT a drill! ");
+       typedPrint("REPEAT: This is NOT a drill");
        P1grid.display(0);
        //GAME START
        //TODO Single player AI... Will take a bit
@@ -72,18 +92,23 @@ int main()
 
      }
      else if (playsel == 2 ){
-       std::cout << "2 Player mission selected." << '\n'<< "Satellite link established, input game option"<<'\n';
-       std::cout << "1: Classic Mission"<<'\n'<<"2: Bonus Mission"<<'\n'<<"3: Salvo Mission"<<'\n'<<"4: Advanced Mission"<<'\n';
+       std::cin.sync();
+       typedPrint("2 Player mission selected.");
+       typedPrint("Satellite link established, input game option");
+       typedPrint("1: Classic Mission");
+       typedPrint("2: Bonus Mission");
+       typedPrint("3: Salvo Mission");
+       typedPrint("4: Advanced Mission");
        switch (modesel) { // Game type selection
-         case 1: std::cout <<'\n' <<"Classic Mission Selected." << '\n'; break;
-         case 2: std::cout <<'\n' <<"Bonus Mission Selected." << '\n'; break;
-         case 3: std::cout <<'\n' <<"Salvo Mission Selected." << '\n'; break;
-         case 4: std::cout <<'\n' <<"Advanced Mission Selected." << '\n'; break;
+         case 1: typedPrint("Classic Mission Selected."); break;
+         case 2: typedPrint("Bonus Mission Selected."); break;
+         case 3: typedPrint("Salvo Mission Selected."); break;
+         case 4: typedPrint("Advanced Mission Selected."); break;
        }
-       std::cout << "Player 1, enter fleet configuration. A/C? " << '\n';
+       typedPrint("Player 1, enter fleet configuration. A/C? ");
        std::cin >> configsel;
         if (configsel =="A" || configsel == "a") {
-          std::cout << "Auto Configuration Selected. Enter configuration code." << '\n';
+          typedPrint("Auto Configuration Selected. Enter configuration code.");
           std::cin >> configcode;
           //TODO Logic for loading specifed grid
         }
@@ -92,11 +117,11 @@ int main()
           for(int i =0; i <5; i++){
             P1grid.display(0);   //Display of the current grid
               switch (i) {    //Message showing which ship is being entered
-                case 0 : std::cout <<'\n'<< "Aircraft Carrier Reporting! [5 Spaces] Enter Coordinates: "; break;
-                case 1 : std::cout <<'\n'<< "Battleship Reporting! [4 Spaces] Enter Coordinates: "; break;
-                case 2 : std::cout <<'\n'<< "Destroyer Reporting! [3 Spaces] Enter Coordinates: "; break;
-                case 3 : std::cout <<'\n'<< "Submarine Reporting! [3 Spaces] Enter Coordinates: "; break;
-                case 4 : std::cout <<'\n'<< "Patrol Boat Reporting! [2 Spaces] Enter Coordinates: "; break;
+                case 0 : typedPrint("Aircraft Carrier Reporting! [5 Spaces] Enter Coordinates: "); break;
+                case 1 : typedPrint("Battleship Reporting! [4 Spaces] Enter Coordinates: "); break;
+                case 2 : typedPrint("Destroyer Reporting! [3 Spaces] Enter Coordinates: "); break;
+                case 3 : typedPrint("Submarine Reporting! [3 Spaces] Enter Coordinates: "); break;
+                case 4 : typedPrint("Patrol Boat Reporting! [2 Spaces] Enter Coordinates: "); break;
               }
 
           std::cin >>Coord1 >> Coord2;
@@ -113,23 +138,23 @@ int main()
          std::cerr << "INVALID INPUT" << '\n';
      }
 
-     std::cout << "Player 2, enter fleet configuration. A/C? " << '\n';
+     typedPrint("Player 2, enter fleet configuration. A/C? ");
      std::cin >> configsel;
       if (configsel =="A") {
-        std::cout << "Auto Configuration Selected. Enter configuration code." << '\n';
+        typedPrint("Auto Configuration Selected. Enter configuration code.");
         std::cin >> configcode;
         //TODO Logic for loading specifed grid
       }
-      else if(configsel == "C"){
+      else if(configsel == "C" || configsel == "c"){
         std::cout << "  Custom Configuration Selected" << '\n' << '\n';
         for(int i =0; i <5; i++){
           P2grid.display(0);   //Display of the current grid
             switch (i) {    //Message showing which ship is being entered
-              case 0 : std::cout <<'\n'<< "Aircraft Carrier Reporting! [5 Spaces] Enter Coordinates: "; break;
-              case 1 : std::cout <<'\n'<< "Battleship Reporting! [4 Spaces] Enter Coordinates: "; break;
-              case 2 : std::cout <<'\n'<< "Destroyer Reporting! [3 Spaces] Enter Coordinates: "; break;
-              case 3 : std::cout <<'\n'<< "Submarine Reporting! [3 Spaces] Enter Coordinates: "; break;
-              case 4 : std::cout <<'\n'<< "Patrol Boat Reporting! [2 Spaces] Enter Coordinates: "; break;
+              case 0 : typedPrint("Aircraft Carrier Reporting! [5 Spaces] Enter Coordinates: "); break;
+              case 1 : typedPrint("Battleship Reporting! [4 Spaces] Enter Coordinates: "); break;
+              case 2 : typedPrint("Destroyer Reporting! [3 Spaces] Enter Coordinates: "); break;
+              case 3 : typedPrint("Submarine Reporting! [3 Spaces] Enter Coordinates: "); break;
+              case 4 : typedPrint("Patrol Boat Reporting! [2 Spaces] Enter Coordinates: "); break;
             }
 
         std::cin >>Coord1 >> Coord2;
@@ -167,15 +192,15 @@ int main()
               } else if (movesel == "Q" || movesel == "q") {
                 P1grid.nuke();
                 movemade = true;
-                break;
               } else{
                 std::cout << "INVALID INPUT" << '\n';
               }
          }
          movemade = false;
          ply1= false;
+         ply2= true;
        }
-       else{ //ply2
+       else if(ply2){ //ply2
          while (!movemade) {
          std::cout << "Awaiting orders from Player 2" << '\n';
          std::cout << "F: Fire\n" <<"R: Repeat\n" <<"D: Display Ship Status\n"<<"Q: Surrender\n" << '\n';
@@ -194,24 +219,31 @@ int main()
            } else if (movesel == "Q" || movesel == "q") {
                 P2grid.nuke();
                 movemade = true;
-                break;
            } else{
               std::cout << "INVALID INPUT" << '\n';
           }
          }
          movemade = false;
          ply1 = true;
+         ply2 =false;
+       }
+       else{
+         break;
        }
 
      } while(P1grid.gameactive() != 0 && P2grid.gameactive() !=0 );
 
      if (P1grid.gameactive() == 0) {
-       std::cout << "Player 1's fleet destroyed. Congratulations, Admiral." << "\n\n";
+       typedPrint("Player 1's fleet destroyed. Congratulations, Admiral.");
+       std::cout<< '\n';
        P1grid.display(0);
+       gameRun = false;
      }
      else{
-       std::cout << "Player 2's fleet destroyed. Congratulations, Admiral." << "\n\n";
+       typedPrint("Player 2's fleet destroyed. Congratulations, Admiral.");
+       std::cout << '\n';
        P2grid.display(0);
+       gameRun = false;
      }
 
   }

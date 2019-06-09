@@ -3,6 +3,8 @@
 
 #include "val.hpp"
 #include <iostream>
+#include <thread>
+#include <chrono>
 namespace bsp
 {
     class Grid
