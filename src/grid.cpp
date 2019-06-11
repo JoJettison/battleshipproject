@@ -220,7 +220,7 @@ Checks if any ships are left on the grid, returns >0 if so
     {
       for(int j=1; j<15; j++)
       {
-        battlegrid[i][j] == "X";
+        battlegrid[i][j] = "X";
       }
     }
   }
