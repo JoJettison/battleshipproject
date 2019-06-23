@@ -11,12 +11,13 @@ namespace bsp
     {
     public:
       Grid();
-      void display(int mode);
-      void addShip(int fcordx, int fcordy, int ecordx, int ecordy);
-      int fire(int xcord, int ycord);
+      void display(int dispmode);
+      void addShip(int firstXCoord, int firstYCoord, int secondXCoord, int secondYCoord);
+      int fire(int xcoord, int ycoord);
       int alphConvert(char alph);
       int gameactive();
       void nuke();
+      int loadGrid(std::string code);
     private:
         std::string battlegrid[11][15];
     };
